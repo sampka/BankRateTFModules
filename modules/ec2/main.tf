@@ -59,7 +59,7 @@ resource "aws_instance" "ec2_instance" {
     ami = "${var.ami}"
     instance_type = "${var.instance_type}"
     vpc_security_group_ids = ["${module.sg.id}"]
-
+    iam_instance_profile = "${aws_iam_role.role.name}"
     user_data = <<-EOF
                 #!/bin/bash
                 echo "Hello, World"
